@@ -17,10 +17,7 @@ import android.widget.EditText;
  * create an instance of this fragment.
  */
 public class EditNoteFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_NOTE = "content";;
+    private static final String ARG_NOTE = "content";
     private String content;
     private EditText txtContent;
 
@@ -55,12 +52,12 @@ public class EditNoteFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         txtContent = view.findViewById(R.id.note_content);
-        if (content != null){
+        if (txtContent != null){
             txtContent.setText(content);
         }
     }
-    public String getContent(){
-        return txtContent.getText().toString();
 
+    public String getContent() {
+        return txtContent.getText().toString();
     }
 }

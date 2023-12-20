@@ -13,25 +13,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.week9.placeholder.PlaceholderContent;
-
 import java.util.ArrayList;
 
-/**
- * A fragment representing a list of Items.
- */
 public class NoteFragment extends Fragment {
-
-    // TODO: Customize parameter argument names
-    private static final String ARG_NOTES= "note";
+    private static final String ARG_NOTES = "notes";
     private ArrayList<Note> notes;
-    private OnNoteListInteractionListener listener;
+    private  OnNotesListInteractionListener listener;
+
+    /**
+     * Mandatory empty constructor for the fragment manager to instantiate the
+     * fragment (e.g. upon screen orientation changes).
+     */
     public NoteFragment() {
     }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static NoteFragment newInstance (ArrayList<Note> notes) {
+    public static NoteFragment newInstance(ArrayList<Note> notes) {
         NoteFragment fragment = new NoteFragment();
         Bundle args = new Bundle();
         args.putSerializable(ARG_NOTES, notes);
@@ -63,23 +61,26 @@ public class NoteFragment extends Fragment {
         return view;
     }
 
-    public void onAttach(@NonNull Context context){
+    @Override
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if(context instanceof OnNoteListInteractionListener){
-            listener = (OnNoteListInteractionListener) context;
-        }else {
-            throw new RuntimeException(context.getClass().getName() +
-                    " should implement OnNoteListInteractionListener");
+        if (context instanceof OnNotesListInteractionListener){
+            listener = (OnNotesListInteractionListener) context;
+        }
+        else{
+            throw new RuntimeException(context.getClass().getName() + "should implement OnNotesListInteractionListener");
         }
     }
 
-    public void onDetach(){
+    @Override
+    public void onDetach() {
         super.onDetach();
         listener = null;
     }
 
-    public interface  OnNoteListInteractionListener{
+    public interface OnNotesListInteractionListener{
         void onNoteSelected(Note note);
-
     }
+
+
 }
